@@ -1,13 +1,21 @@
 // pages/list.tsx
 import React from "react";
 import type { ServiceOrder, ServiceOrderStatus } from "@/types/serviceOrder";
-import { getServiceOrders, updateServiceOrderStatus, deleteServiceOrder } from "@/services/serviceOrderApi";
+import {
+  getServiceOrders,
+  updateServiceOrderStatus,
+  deleteServiceOrder,
+} from "@/services/serviceOrderApi";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ButtomAction } from "../components/ButtomAction";
 import { toast } from "sonner";
 import {
-  Table, TableBody, TableCell,
-  TableHead, TableHeader, TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table";
 export function List() {
   // 1. Estado
@@ -55,15 +63,19 @@ export function List() {
             <TableRow key={order.id}>
               <TableCell>{order.code}</TableCell>
               <TableCell>{order.client}</TableCell>
-              <TableCell>{new Date(order.date).toLocaleDateString("pt-BR")}</TableCell>
-              <TableCell><StatusBadge status={order.status} /></TableCell>
+              <TableCell>
+                {new Date(order.date).toLocaleDateString("pt-BR")}
+              </TableCell>
+              <TableCell>
+                <StatusBadge status={order.status} />
+              </TableCell>
               <TableCell>
                 <div className="flex gap-2">
                   <ButtomAction
-  order={order}
-  onStatusChange={handleStatusChange}
-  onDelete={handleDelete}
-/>
+                    order={order}
+                    onStatusChange={handleStatusChange}
+                    onDelete={handleDelete}
+                  />
                 </div>
               </TableCell>
             </TableRow>

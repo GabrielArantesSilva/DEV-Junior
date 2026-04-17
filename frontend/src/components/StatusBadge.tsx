@@ -12,11 +12,11 @@ export function statusLabel(status: ServiceOrderStatus): string {
     case "OPEN":
         return "Aberta";
     case "IN_PROGRESS":
-        return "Em Progresso";
+        return "Em Andamento";
     case "DONE":
-        return "Concluído";
+        return "Concluída";
     case "CANCELED":
-        return "Cancelado";
+        return "Cancelada";
   }
 }; 
 
