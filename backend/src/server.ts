@@ -1,6 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import serviceOrderRoutes from "./routes/serviceOrder.routes";
+import cors from "cors";
+
+// depois do app.use(express.json()):
 
 dotenv.config();
 
@@ -8,6 +11,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 app.use("/service-orders", serviceOrderRoutes);
 
