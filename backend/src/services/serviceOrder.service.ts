@@ -27,7 +27,7 @@ async function createServiceOrder(data: ServiceOrderPick): Promise<ServiceOrder>
 }
 
 async function getAllServiceOrders(): Promise<ServiceOrder[]> {
-  return await prisma.serviceOrder.findMany();
+  return await prisma.serviceOrder.findMany({ orderBy: { id: "asc" } });
 }
 
 async function updateServiceOrderStatus(

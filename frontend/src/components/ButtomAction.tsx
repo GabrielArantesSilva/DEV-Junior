@@ -12,37 +12,22 @@ import {
   SelectValue,
 } from "./ui/select";
 
-interface ServiceOrderItemProps {
-  order: ServiceOrder;
-  onStatusChange: (id: number, status: ServiceOrderStatus) => void;
-  onDelete: (id: number) => void;
-
-}
-export function ServiceOrderItem({
-  order,
-  onStatusChange,
-  onDelete,
+     interface ServiceOrderItemProps {
+    order: ServiceOrder;
+    onStatusChange: (id: number, status: ServiceOrderStatus) => void;
+    onDelete: (id: number) => void;
+  };
+  export function ButtomAction({
+    order,
+    onStatusChange,
+    onDelete,
+  }: ServiceOrderItemProps) {
+    const [selectedStatus, setSelectedStatus] = useState(order.status);
   
-}: ServiceOrderItemProps) {
-  const [selectedStatus, setSelectedStatus] = useState(order.status);
-  return (
-    <div className="p-4 border rounded-md bg-white shadow">
-      <div className="mb-2 justify-between">
-        <h2 className="text-lg font-semibold">{order.code}</h2>
-        <p className="mb-1">
-          <strong>Cliente:</strong> {order.client}
-        </p>
-        <p className="mb-1">
-          <strong>Descrição:</strong> {order.description}
-        </p>
-        <p className="mb-1">
-          <strong>Data:</strong> {new Date(order.date).toLocaleDateString()}
-        </p>
-        <p className="mb-1">
-          <strong>Status:</strong> <StatusBadge status={order.status} />
-        </p>
-      </div>
 
+
+ 
+    return (
       <div className="mt-4 flex space-x-2 justify-end w-full">
         <Select
           value={selectedStatus}
@@ -63,11 +48,10 @@ export function ServiceOrderItem({
         <Button onClick={() => onStatusChange(order.id, selectedStatus)}>
           <Pencil fontVariant="bold" size={18} />
         </Button>
-        <Button onClick={() => onDelete(order.id) }>
+        <Button onClick={() => onDelete(order.id)}>
           <TrashSimpleIcon fontVariant="bold" size={18} />
         </Button>
       </div>
-    </div>
-  );
-}
-export default ServiceOrderItem;
+    );
+  };
+

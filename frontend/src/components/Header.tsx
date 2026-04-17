@@ -1,11 +1,24 @@
-
+import { Link, useLocation } from "react-router-dom";
+import { Button } from "./ui/button";
 
 function Header() {
+  const location = useLocation();
+
+  function isActive(path: string) {
+    return location.pathname === path ? "underline underline-offset-8  " : "";
+  }
   return (
-    <header className="bg-gray-800 text-white p-5 shadow-md">
-      <div className="max-w-2xl mx-auto">
-        <h1 className="text-xl font-bold text-center">Gerenciador de Ordens de Serviço</h1>
-      </div>
+    <header className="bg-gray-200 text-white p-4 shadow-md ">
+      <div className="w-full ">
+      <Button variant="link" asChild className={isActive("/")}>
+        <Link to="/" >Home</Link>
+      </Button>
+      <Button variant="link" asChild className={isActive("/dashboard")}>
+        <Link to="/dashboard">Dashboard</Link>
+      </Button>
+      <Button variant="link" asChild className={isActive("/list")}>
+        <Link to="/list">Listar Ordens de Serviço</Link>
+      </Button></div>
     </header>
   );
 }

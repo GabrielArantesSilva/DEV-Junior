@@ -27,6 +27,7 @@ async function deleteServiceOrderController(req: Request, res: Response): Promis
   const success = await deleteServiceOrder(id);
   if (success) {
     res.status(204).send();
+    
   } else {
     res.status(404).json({ error: "Service order not found" });
   }
@@ -35,6 +36,7 @@ async function deleteServiceOrderController(req: Request, res: Response): Promis
 async function getAllServiceOrdersController(req: Request, res: Response): Promise<void> {
   const orders = await getAllServiceOrders();
   res.status(200).json(orders);
+  
 }
 
 async function updateServiceOrderStatusController(req: Request, res: Response): Promise<void> {

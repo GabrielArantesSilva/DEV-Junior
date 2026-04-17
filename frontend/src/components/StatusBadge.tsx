@@ -10,13 +10,13 @@ interface StatusBadgeProps {
 export function statusLabel(status: ServiceOrderStatus): string {
   switch (status) {
     case "OPEN":
-        return "open";
+        return "Aberta";
     case "IN_PROGRESS":
-        return "in-progress";
+        return "Em Progresso";
     case "DONE":
-        return "done";
+        return "Concluído";
     case "CANCELED":
-        return "canceled";
+        return "Cancelado";
   }
 }; 
 
